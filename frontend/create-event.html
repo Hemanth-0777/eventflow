@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Event • EventFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+    <nav class="topnav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html">Teams</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+        ← Back
+      </button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="card">
+      <div class="section-header">
+        <h2>Create a New Event</h2>
+        <p style="color: var(--muted); margin: 0;">Fill in the form and save to add to the dashboard</p>
+      </div>
+
+      <form id="create-event-form">
+        <div class="input-group">
+          <label for="event-name">Event title</label>
+          <input id="event-name" type="text" placeholder="e.g., Spring Meetup" required />
+        </div>
+
+        <div class="input-group">
+          <label for="event-date">Date & time</label>
+          <input id="event-date" type="datetime-local" required />
+        </div>
+
+        <div class="input-group">
+          <label for="event-desc">Description</label>
+          <textarea id="event-desc" rows="4" placeholder="A short description..."></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Save Event</button>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>Thanks for using EventFlow — stay connected!</p>
+    <div class="social-links">
+      <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+      <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+    </div>
+  </div>
+
+  <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+</footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

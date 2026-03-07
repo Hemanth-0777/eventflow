@@ -1,0 +1,15 @@
+/event-manager-platform
+│
+├── /backend
+│   ├── server.js
+│   └── package.json
+│
+└── /frontend
+    ├── index.html       (Dashboard)
+    ├── teams.html       (Team Formation)
+    ├── admin.html       (Management)
+    ├── style.css        (Shared Modern UI)
+    ├── script.js        (Dashboard Logic)
+    ├── teams.js         (Team Logic)
+    └── admin.js         (Admin Logic)
+    

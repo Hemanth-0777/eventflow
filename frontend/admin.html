@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin HQ • EventFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+
+    <nav class="topnav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html">Teams</a>
+      <a href="admin.html" class="active">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+        ← Back
+      </button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <h2>Admin Control Center</h2>
+          <p style="color: var(--muted); margin: 0;">
+            Manage participants, monitor activity, and broadcast updates.
+          </p>
+        </div>
+        <button class="btn btn-primary" onclick="triggerMassAlert()">📢 Broadcast Alert</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <h3>124</h3>
+          <p>Total Participants</p>
+        </div>
+        <div class="stat-card">
+          <h3>32</h3>
+          <p>Teams Formed</p>
+        </div>
+        <div class="stat-card">
+          <h3>5</h3>
+          <p>Live Sessions</p>
+        </div>
+      </div>
+
+      <section class="card table-container">
+        <div class="table-header">
+          <h2>Pending Team Approvals</h2>
+          <input type="text" id="searchTable" placeholder="Filter teams..." />
+        </div>
+
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Team Name</th>
+              <th>Captain</th>
+              <th>Size</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTeamBody"></tbody>
+        </table>
+      </section>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <h2>Pending Team Approvals</h2>
+          <p style="color: var(--muted); margin: 0;">
+            Review new teams and approve them before they join the forum.
+          </p>
+        </div>
+        <button class="btn btn-secondary" onclick="refreshPending()">Refresh</button>
+      </div>
+
+      <div class="approval-grid">
+        <article class="approval-card">
+          <div class="approval-top">
+            <div>
+              <h3>Hackathon Heroes</h3>
+              <p class="muted">Captain: Priya S.</p>
+            </div>
+            <span class="badge pending">Pending</span>
+          </div>
+
+          <p class="muted">
+            5 members • 2 submitted projects • waiting for approval
+          </p>
+
+          <div class="approval-actions">
+            <button class="btn btn-secondary" onclick="rejectTeam('Hackathon Heroes')">
+              Reject
+            </button>
+            <button class="btn btn-primary" onclick="approveTeam('Hackathon Heroes')">
+              Approve
+            </button>
+          </div>
+        </article>
+
+        <article class="approval-card">
+          <div class="approval-top">
+            <div>
+              <h3>Code Crusaders</h3>
+              <p class="muted">Captain: Arjun K.</p>
+            </div>
+            <span class="badge pending">Pending</span>
+          </div>
+
+          <p class="muted">
+            3 members • 1 submitted project • waiting for approval
+          </p>
+
+          <div class="approval-actions">
+            <button class="btn btn-secondary" onclick="rejectTeam('Code Crusaders')">
+              Reject
+            </button>
+            <button class="btn btn-primary" onclick="approveTeam('Code Crusaders')">
+              Approve
+            </button>
+          </div>
+        </article>
+
+        <!-- Add more cards as needed -->
+      </div>
+    </section>
+  </main>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Thanks for using EventFlow — stay connected!</p>
+    <div class="social-links">
+      <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+      <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+    </div>
+  </div>
+
+  <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+</footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Events • EventFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+
+    <nav class="topnav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="events.html" class="active">All Events</a>
+      <a href="teams.html">Teams</a>
+      <a href="admin.html">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+        ← Back
+      </button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="card">
+      <div class="section-header">
+        <h2>All Events</h2>
+        <button class="btn btn-primary" onclick="window.location.href='create-event.html'">
+          + New Event
+        </button>
+      </div>
+
+      <div id="event-list" class="event-list">
+        <article class="event-card">
+          <img src="https://source.unsplash.com/collection/190727/640x360" alt="Hackathon stage" />
+          <h3>Midnight Hackathon</h3>
+          <p class="muted">Starts: Apr 22 • 8:00 PM</p>
+          <p>Join other creators for a 12-hour sprint building creative apps and winning prizes.</p>
+          <div class="tag live">Live</div>
+        </article>
+
+        <article class="event-card">
+          <img src="https://source.unsplash.com/collection/190727/641x360" alt="Team brainstorm" />
+          <h3>Design Sprint Weekend</h3>
+          <p class="muted">Starts: May 5 • 10:00 AM</p>
+          <p>Collaborate on UI/UX concepts, rapid prototyping, and polished pitch decks.</p>
+          <div class="tag">Upcoming</div>
+        </article>
+
+        <article class="event-card">
+          <img src="https://source.unsplash.com/collection/190727/642x360" alt="Award ceremony" />
+          <h3>Product Showcase</h3>
+          <p class="muted">Starts: Jun 12 • 2:00 PM</p>
+          <p>Present your project to judges, get live feedback, and network with mentors.</p>
+          <div class="tag">Upcoming</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Thanks for using EventFlow — stay connected!</p>
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      </div>
+    </div>
+
+    <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="updates.js"></script>
+</body>
+</html>

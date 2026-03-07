@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Center | EventFlow</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+
+    <nav class="topnav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html" class="active">Teams</a>
+      <a href="admin.html">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+        ← Back
+      </button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <h2>Team Center</h2>
+          <p style="color: var(--muted); margin: 0;">
+            Build your team, invite members, and manage roles.
+          </p>
+        </div>
+        <div class="status-pill ready">Status: Looking for Members</div>
+      </div>
+
+      <div class="team-layout">
+        <section class="card creation-card">
+          <h3><i data-lucide="plus-circle"></i> Formation</h3>
+
+          <div class="input-group">
+            <label for="teamNameInput">Team Name</label>
+            <input type="text" id="teamNameInput" placeholder="e.g. Byte Busters" />
+          </div>
+
+          <div class="input-group">
+            <label for="inviteEmail">Invite Member (Email)</label>
+            <div class="flex-row">
+              <input type="email" id="inviteEmail" placeholder="teammate@example.com" />
+              <button class="btn btn-secondary" onclick="addMember()">Invite</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary full-width" onclick="saveTeam()">Register Team</button>
+        </section>
+
+        <section class="card preview-card">
+          <h3>Team Roster</h3>
+          <div id="memberList" class="member-list">
+            <div class="member-item captain">
+              <img src="https://ui-avatars.com/api/?name=Captain" alt="Avatar" />
+              <div>
+                <strong>You (Captain)</strong>
+                <p>Lead Developer</p>
+              </div>
+              <span class="badge">Owner</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Thanks for using EventFlow — stay connected!</p>
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      </div>
+    </div>
+
+    <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="teams.js"></script>
+</body>
+</html>
