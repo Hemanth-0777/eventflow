@@ -44,23 +44,24 @@
 
       <div class="stats-row">
         <div class="stat-card">
-          <h3>124</h3>
+          <h3 id="statParticipants">124</h3>
           <p>Total Participants</p>
         </div>
         <div class="stat-card">
-          <h3>32</h3>
+        <h3 id="statTeams">32</h3>
           <p>Teams Formed</p>
         </div>
         <div class="stat-card">
-          <h3>5</h3>
-          <p>Live Sessions</p>
+         <h3 id="statSessions">5</h3>
+
+         <p>Live Sessions</p>
         </div>
       </div>
 
       <section class="card table-container">
         <div class="table-header">
           <h2>Pending Team Approvals</h2>
-          <input type="text" id="searchTable" placeholder="Filter teams..." />
+          <input type="text" id="teamFilter" placeholder="Filter teams..." />
         </div>
 
         <table class="admin-table">
@@ -89,7 +90,7 @@
         <button class="btn btn-secondary" onclick="refreshPending()">Refresh</button>
       </div>
 
-      <div class="approval-grid">
+      <div class="approval-grid" id="pendingTeams">.
         <article class="approval-card">
           <div class="approval-top">
             <div>
