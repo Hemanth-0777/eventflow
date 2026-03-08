@@ -48,6 +48,26 @@ a {
 button {
   cursor: pointer;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(255, 221, 110, 0.28), transparent 55%),
+              radial-gradient(circle at bottom, rgba(255, 169, 0, 0.30), transparent 60%),
+              linear-gradient(135deg, rgba(34, 29, 34, 0.9), rgba(15, 10, 15, 0.9));
+  background-size: 180% 180%;
+  animation: bgShift 24s ease infinite;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Animated background shift */
+@keyframes bgShift {
+  0% { background-position: 0% 60%; }
+  50% { background-position: 100% 40%; }
+  100% { background-position: 0% 60%; }
+}
+
 
 /* NAV */
 .topnav {
