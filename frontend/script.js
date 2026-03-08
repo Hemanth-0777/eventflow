@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.style.display = text.includes(filter) ? "" : "none";
       });
     });
+  }
   // Display name from login
 const currentUser = localStorage.getItem('currentUser');
 if (currentUser) {
