@@ -71,3 +71,206 @@
   border-radius: 4px;
 }
 .btn-reject:hover { background: #a71d2a; }
+body.light-mode .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text);
+}
+/* Unique Space Theme Variables */
+:root {
+    --glow-cyan: #00f2ff;
+    --glow-purple: #bc13fe;
+    --fire: #ff6200;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #222;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .brand {
+  color: #ffd700; /* gold */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.topnav-links {
+  display: flex;
+  gap: 20px;
+}
+.topnav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.topnav-links a.active {
+  background: #ffd700;
+  color: #222;
+}
+
+.topnav-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn-secondary {
+  background: #8b5e3c; /* brown */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-secondary:hover { background: #6e4a2f; }
+
+.btn-logout {
+  background: #ff4b4b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-logout:hover { background: #d93636; }
+/* Table container */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Attractive table */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px; /* spacing between rows */
+}
+
+.admin-table th {
+  background: #222;
+  color: #ffd700; /* gold accent */
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px 6px 0 0;
+}
+
+.admin-table td {
+  background: #fff;
+  padding: 14px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+/* Card-like row effect */
+.admin-table tr {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-table tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Status badges */
+.badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.badge.pending { background: #ffc107; color: #222; }
+.badge.approved { background: #28a745; color: #fff; }
+.badge.rejected { background: #dc3545; color: #fff; }
+
+/* Action buttons inline */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.btn-approve {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-approve:hover { background: #1e7e34; }
+.btn-reject {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-reject:hover { background: #a71d2a; }
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #222;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .brand {
+  color: #ffd700; /* gold */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.topnav-links {
+  display: flex;
+  gap: 20px;
+}
+.topnav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.topnav-links a.active {
+  background: #ffd700;
+  color: #222;
+}
+
+.topnav-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn-secondary {
+  background: #8b5e3c; /* brown */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-secondary:hover { background: #6e4a2f; }
+
+.btn-logout {
+  background: #ff4b4b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.btn-logout:hover { background: #d93636; }
+
+/* Rest of your Teams page styles (cards, table, badges, etc.) */
+
+
+
+/* Rest of your Teams page styles (cards, table, badges, etc.) */
+
