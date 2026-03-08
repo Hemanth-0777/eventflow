@@ -1,200 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interstellar Welcome</title>
-    <style>
-        :root {
-            --neon-blue: #00f2ff;
-            --neon-purple: #7000ff;
-            --flame: #ff4d00;
-        }
+  <meta charset="UTF-8">
+  <title>Teams</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #050505;
-            overflow: hidden;
-            font-family: 'Orbitron', sans-serif; /* Futuristic font feel */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .main-grid {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+    }
 
-        /* Dynamic Canvas Starfield */
-        #starCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
+    /* Navigation bar */
+    .topnav-links {
+      display: flex;
+      gap: 20px;
+      background: #fff;
+      padding: 12px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .topnav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .topnav-links a.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+    .topnav-actions {
+      display: flex;
+      gap: 10px;
+      padding: 10px 20px;
+      background: #fafafa;
+      border-bottom: 1px solid #ddd;
+    }
 
-        /* Unique Rocket Graphics */
-        .rocket-container {
-            position: absolute;
-            z-index: 1;
-            font-size: 80px;
-            filter: drop-shadow(0 0 15px var(--neon-blue));
-            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            pointer-events: none;
-        }
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .section-header h2 {
+      margin: 0;
+    }
+    .muted {
+      color: #666;
+    }
 
-        .rocket-left { top: 15%; left: 10%; transform: rotate(45deg); }
-        .rocket-right { bottom: 15%; right: 10%; transform: rotate(45deg); }
+    /* Form */
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .form-grid label {
+      font-weight: bold;
+      color: #444;
+    }
+    .form-grid input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-        /* Floating Animation */
-        .float { animation: floating 4s ease-in-out infinite; }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0) rotate(45deg); }
-            50% { transform: translateY(-30px) rotate(50deg); }
-        }
+    /* Buttons */
+    .btn {
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover { background: #0056b3; }
+    .btn-secondary {
+      background: #eee;
+      border: 1px solid #ccc;
+    }
+    .btn-secondary:hover { background: #ddd; }
+    .btn-logout {
+      background: rgba(255, 75, 75, 0.15);
+      color: #ff4b4b;
+      border: 1px solid rgba(255, 75, 75, 0.3);
+    }
 
-        /* Unique Button Styling */
-        .welcome-btn {
-            position: relative;
-            z-index: 10;
-            background: transparent;
-            color: var(--neon-blue);
-            font-size: 2rem;
-            padding: 20px 50px;
-            border: 2px solid var(--neon-blue);
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            transition: 0.5s;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-        }
+    /* Table */
+    .table-container { overflow-x: auto; }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .admin-table th, .admin-table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    .admin-table th {
+      background: #007bff;
+      color: #fff;
+    }
+    .admin-table tr:nth-child(even) { background: #f9f9f9; }
 
-        .welcome-btn:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 50px var(--neon-blue);
-        }
+    /* Action buttons */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-approve {
+      background: #28a745;
+      color: #fff;
+      border: none;
+    }
+    .btn-approve:hover { background: #1e7e34; }
+    .btn-reject {
+      background: #dc3545;
+      color: #fff;
+      border: none;
+    }
+    .btn-reject:hover { background: #a71d2a; }
 
-        /* Rocket Exhaust/Flame Effect */
-        .exhaust {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 0px;
-            background: var(--flame);
-            filter: blur(5px);
-            transition: 0.3s;
-        }
+    /* Status badge */
+    .badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .badge.pending { background: #ffc107; color: #333; }
+    .badge.approved { background: #28a745; color: #fff; }
+    .badge.rejected { background: #dc3545; color: #fff; }
 
-        .ignite .exhaust {
-            height: 40px;
-            box-shadow: 0 0 20px var(--flame);
-        }
-
-        .shake-screen {
-            animation: shake 0.2s infinite;
-        }
-
-        @keyframes shake {
-            0% { transform: translate(1px, 1px); }
-            50% { transform: translate(-1px, -2px); }
-            100% { transform: translate(1px, -1px); }
-        }
-    </style>
+    /* Footer */
+    .site-footer {
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+    .footer-note {
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
 </head>
-<body id="mainBody">
+<body>
+  <header class="site-header">
+    <nav class="topnav-links">
+      <a href="welcome.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html" class="active">Teams</a>
+      <a href="admin.html">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='welcome.html'">← Back</button>
+      <button class="btn btn-logout" onclick="window.location.href='index.html'">Logout</button>
+    </div>
+  </header>
 
-    <canvas id="starCanvas"></canvas>
+  <main class="main-grid">
+    <!-- Registration Form -->
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <h2>Register a New Team</h2>
+          <p class="muted">Fill in the details to add your team to the event.</p>
+        </div>
+      </div>
+      <form id="teamForm" class="form-grid">
+        <label>Team Name</label>
+        <input type="text" id="teamName" required />
+        <label>Members (comma separated)</label>
+        <input type="text" id="members" required />
+        <label>Captain</label>
+        <input type="text" id="captain" required />
+        <label>Contact Email</label>
+        <input type="email" id="email" required />
+        <button type="submit" class="btn btn-primary">Register Team</button>
+      </form>
+    </section>
 
-    <div id="r1" class="rocket-container rocket-left float">🚀<div class="exhaust"></div></div>
-    <div id="r2" class="rocket-container rocket-right float">🚀<div class="exhaust"></div></div>
+    <!-- Registered Teams Table -->
+    <section class="card table-container">
+      <div class="table-header">
+        <h2>Registered Teams</h2>
+        <input type="text" id="searchTable" placeholder="Filter teams..." />
+      </div>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Team Name</th>
+            <th>Members</th>
+            <th>Captain</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="teamTableBody"></tbody>
+      </table>
+    </section>
+  </main>
 
-    <button class="welcome-btn" onclick="startSequence()">Welcome</button>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Thanks for using EventFlow — stay connected!</p>
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      </div>
+    </div>
+    <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+  </footer>
 
-    <script>
-        const canvas = document.getElementById('starCanvas');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
-        let speed = 0.5;
+  <script>
+    const form = document.getElementById('teamForm');
+    const tableBody = document.getElementById('teamTableBody');
+    const searchInput = document.getElementById('searchTable');
 
-        // Initialize Canvas
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            for(let i=0; i<400; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    velocity: Math.random() * 3
-                });
-            }
-        }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-        function drawStars() {
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            
-            stars.forEach(s => {
-                ctx.beginPath();
-                // If speed is high, draw lines (warp effect), else draw dots
-                if (speed > 2) {
-                    ctx.moveTo(s.x, s.y);
-                    ctx.lineTo(s.x + (speed * 2), s.y + (speed * 2));
-                    ctx.strokeStyle = "white";
-                    ctx.stroke();
-                } else {
-                    ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                
-                s.x += s.velocity * speed;
-                s.y += s.velocity * speed;
+      const teamName = document.getElementById('teamName').value.trim();
+      const members = document.getElementById('members').value.trim();
+      const captain = document.getElementById('captain').value.trim();
+      const email = document.getElementById('email').value.trim();
 
-                if(s.x > canvas.width) s.x = 0;
-                if(s.y > canvas.height) s.y = 0;
-            });
-            requestAnimationFrame(drawStars);
-        }
+      if (!teamName || !members || !captain || !email) {
+        alert("Please fill in all fields.");
+        return;
+      }
 
-        function startSequence() {
-            const r1 = document.getElementById('r1');
-            const r2 = document.getElementById('r2');
-            const body = document.getElementById('mainBody');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${teamName}</td>
+        <td>${members}</td>
+        <td>${captain}</td>
+        <td>${email}</td>
+        <td><span class="badge pending">Pending</span></td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-approve" onclick="approveTeam(this)">Approve</button>
+            <button class="btn btn-reject" onclick="rejectTeam(this)">Reject</button>
+          </div>
+        </td>
+      `;
+      tableBody.appendChild(row);
+      form.reset();
+    });
 
-            // 1. Ignite and Shake
-            r1.classList.remove('float');
-            r2.classList.remove('float');
-            r1.classList.add('ignite');
-            r2.classList.add('ignite');
-            body.classList.add('shake-screen');
-
-            // 2. Increase Star Speed (Hyperdrive)
-            let accel = setInterval(() => {
-                speed += 0.5;
-                if(speed > 15) clearInterval(accel);
-            }, 50);
-
-            // 3. Launch Rockets
-            setTimeout(() => {
-                r1.style.transform = "translate(3000px, -3000px) rotate(45deg) scale(0.1)";
-                r2.style.transform = "translate(3000px, -3000px) rotate(45deg) scale(0.1)";
-                
-                // 4. Redirect
-                setTimeout(() => {
-                    window.location.href = "login.html";
-                }, 1000);
-            }, 800);
-        }
-
-        initCanvas();
-        drawStars();
-        window.onresize = initCanvas;
-    </script>
-</body>
-</html>
+    searchInput.addEventListener('keyup', function() {
+      const filter = searchInput.value
