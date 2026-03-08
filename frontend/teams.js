@@ -1,3 +1,13 @@
+// Back and Logout buttons
+document.getElementById('backBtn').addEventListener('click', () => {
+  window.location.href = 'welcome.html';
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+// Team registration logic
 const form = document.getElementById('teamForm');
 const tableBody = document.getElementById('teamTableBody');
 const searchInput = document.getElementById('searchTable');
@@ -44,4 +54,14 @@ searchInput.addEventListener('keyup', function() {
 
 function approveTeam(button) {
   const row = button.closest('tr');
-  const statusCell = row.querySelector
+  const statusCell = row.querySelector('.badge');
+  statusCell.textContent = 'Approved';
+  statusCell.className = 'badge approved';
+}
+
+function rejectTeam(button) {
+  const row = button.closest('tr');
+  const statusCell = row.querySelector('.badge');
+  statusCell.textContent = 'Rejected';
+  statusCell.className = 'badge rejected';
+}
