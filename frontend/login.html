@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventFlow • Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <div class="modal" style="background: transparent; position: relative; min-height: 100vh;">
+    <div class="modal-content" style="margin: auto;">
+      <div class="brand" style="justify-content: center; margin-bottom: 2rem;">
+        <span class="brand-icon">🚀</span>
+        <span class="brand-name">EventFlow</span>
+      </div>
+
+      <h2 style="text-align: center; margin-bottom: 1.5rem;">Welcome back!</h2>
+
+      <form id="loginForm" class="contact-form" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+        <div class="input-group">
+          <label for="login-user">Username or Email</label>
+          <input type="text" id="login-user" placeholder="Enter your credentials" required />
+        </div>
+        <div class="input-group">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary full-width" style="margin-top: 1rem;">
+          Login
+        </button>
+      </form>
+
+      <p style="text-align: center; margin-top: 1.5rem; color: var(--muted);">
+        Don't have an account? <a href="register.html" style="color: var(--accent); font-weight: 700;">Create one</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const user = document.getElementById('login-user').value;
+      const pass = document.getElementById('login-pass').value;
+
+      // Simple mock login - in a real app, this would hit an API
+      if (user && pass) {
+        localStorage.setItem('loggedInUser', user);
+        alert('Welcome back, ' + user + '!');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
