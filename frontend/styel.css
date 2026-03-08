@@ -37,111 +37,61 @@ body.light-mode .btn-secondary {
     --fire: #ff6200;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: #000;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #222;
+  padding: 10px 20px;
 }
 
-/* Starfield Canvas */
-#starCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .brand {
+  color: #ffd700; /* gold */
+  font-weight: bold;
+  font-size: 18px;
 }
 
-/* Rocket Graphics */
-.rocket {
-    position: absolute;
-    font-size: 80px;
-    z-index: 2;
-    filter: drop-shadow(0 0 15px var(--glow-cyan));
-    transition: transform 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    pointer-events: none;
+.topnav-links {
+  display: flex;
+  gap: 20px;
 }
-
-.rocket-l { top: 15%; left: 15%; transform: rotate(45deg); }
-.rocket-r { bottom: 15%; right: 15%; transform: rotate(45deg); }
-
-/* Animation: Floating */
-.float { animation: floatAnim 4s ease-in-out infinite; }
-@keyframes floatAnim {
-    0%, 100% { transform: translateY(0) rotate(45deg); }
-    50% { transform: translateY(-20px) rotate(50deg); }
-}
-
-/* Animation: Ignition Shake */
-.shake { animation: shakeAnim 0.1s infinite; }
-@keyframes shakeAnim {
-    0% { transform: translate(1px, 1px) rotate(45deg); }
-    50% { transform: translate(-1px, -2px) rotate(46deg); }
-    100% { transform: translate(1px, -1px) rotate(44deg); }
-}
-
-/* Unique Neon Button */
-.welcome-btn {
-    position: relative;
-    z-index: 10;
-    padding: 20px 60px;
-    font-size: 2rem;
-    color: var(--glow-cyan);
-    background: rgba(255, 255, 255, 0.05);
-    border: 3px solid var(--glow-cyan);
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 8px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: 0.4s;
-    box-shadow: 0 0 15px var(--glow-cyan), inset 0 0 15px var(--glow-cyan);
-}
-
-.welcome-btn:hover {
-    color: white;
-    background: var(--glow-cyan);
-    box-shadow: 0 0 50px var(--glow-cyan);
-    transform: scale(1.1);
-}
-.btn-logout {
-  background-color: #ff4d4d; /* A soft red color */
-  color: white;
-  border: none;
-  padding: 8px 16px;
+.topnav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
   border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
 }
-/* Navigation actions */
+.topnav-links a.active {
+  background: #ffd700;
+  color: #222;
+}
+
 .topnav-actions {
   display: flex;
   gap: 10px;
-  padding: 10px 20px;
-  background: #fafafa;
-  border-bottom: 1px solid #ddd;
 }
-
 .btn-secondary {
-  background: #eee;
-  border: 1px solid #ccc;
-  color: #333;
+  background: #8b5e3c; /* brown */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
 }
-.btn-secondary:hover { background: #ddd; }
+.btn-secondary:hover { background: #6e4a2f; }
 
 .btn-logout {
-  background: rgba(255, 75, 75, 0.15);
-  color: #ff4b4b;
-  border: 1px solid rgba(255, 75, 75, 0.3);
+  background: #ff4b4b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
 }
-.btn-logout:hover {
-  background: rgba(255, 75, 75, 0.25);
-}
+.btn-logout:hover { background: #d93636; }
 
-/* Keep rest of your Teams page styles here (cards, table, badges, etc.) */
+/* Rest of your Teams page styles (cards, table, badges, etc.) */
