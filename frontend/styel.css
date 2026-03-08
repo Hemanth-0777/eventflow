@@ -1,0 +1,125 @@
+/* Light Mode Variables */
+body.light-mode {
+  --bg: #f8f9fa;
+  --surface: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+  --text: #1a1a1a;
+  --muted: #6c757d;
+  --accent: #d4a017; /* Slightly deeper gold for contrast on white */
+  --accent2: #b8860b;
+}
+
+/* Light Mode Background Overrides */
+body.light-mode {
+  background: radial-gradient(circle at top, rgba(255, 221, 110, 0.1), transparent 55%),
+              linear-gradient(135deg, #ffffff, #f0f2f5);
+  color: var(--text);
+}
+
+body.light-mode .modal-content,
+body.light-mode .card,
+body.light-mode .live-card,
+body.light-mode .topnav {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  backdrop-filter: blur(10px);
+}
+
+body.light-mode .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text);
+}
+/* Unique Space Theme Variables */
+:root {
+    --glow-cyan: #00f2ff;
+    --glow-purple: #bc13fe;
+    --fire: #ff6200;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Starfield Canvas */
+#starCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Rocket Graphics */
+.rocket {
+    position: absolute;
+    font-size: 80px;
+    z-index: 2;
+    filter: drop-shadow(0 0 15px var(--glow-cyan));
+    transition: transform 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    pointer-events: none;
+}
+
+.rocket-l { top: 15%; left: 15%; transform: rotate(45deg); }
+.rocket-r { bottom: 15%; right: 15%; transform: rotate(45deg); }
+
+/* Animation: Floating */
+.float { animation: floatAnim 4s ease-in-out infinite; }
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0) rotate(45deg); }
+    50% { transform: translateY(-20px) rotate(50deg); }
+}
+
+/* Animation: Ignition Shake */
+.shake { animation: shakeAnim 0.1s infinite; }
+@keyframes shakeAnim {
+    0% { transform: translate(1px, 1px) rotate(45deg); }
+    50% { transform: translate(-1px, -2px) rotate(46deg); }
+    100% { transform: translate(1px, -1px) rotate(44deg); }
+}
+
+/* Unique Neon Button */
+.welcome-btn {
+    position: relative;
+    z-index: 10;
+    padding: 20px 60px;
+    font-size: 2rem;
+    color: var(--glow-cyan);
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid var(--glow-cyan);
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+    box-shadow: 0 0 15px var(--glow-cyan), inset 0 0 15px var(--glow-cyan);
+}
+
+.welcome-btn:hover {
+    color: white;
+    background: var(--glow-cyan);
+    box-shadow: 0 0 50px var(--glow-cyan);
+    transform: scale(1.1);
+}
+.btn-logout {
+  background-color: #ff4d4d; /* A soft red color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: #e60000;
+}

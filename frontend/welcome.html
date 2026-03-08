@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topnav-links" data-nav>
+      <a href="index.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html">Teams</a>
+      <a href="admin.html">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">← Back</button>
+      <button class="btn btn-logout" onclick="window.location.href='welcome.html'">Logout</button>
+    </div>
+  </header>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interstellar Welcome</title>
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #7000ff;
+            --flame: #ff4d00;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif; /* Futuristic font feel */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Dynamic Canvas Starfield */
+        #starCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Unique Rocket Graphics */
+        .rocket-container {
+            position: absolute;
+            z-index: 1;
+            font-size: 80px;
+            filter: drop-shadow(0 0 15px var(--neon-blue));
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+        }
+
+        .rocket-left { top: 15%; left: 10%; transform: rotate(45deg); }
+        .rocket-right { bottom: 15%; right: 10%; transform: rotate(45deg); }
+
+        /* Floating Animation */
+        .float { animation: floating 4s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(-30px) rotate(50deg); }
+        }
+
+        /* Unique Button Styling */
+        .welcome-btn {
+            position: relative;
+            z-index: 10;
+            background: transparent;
+            color: var(--neon-blue);
+            font-size: 2rem;
+            padding: 20px 50px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            transition: 0.5s;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-btn:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 50px var(--neon-blue);
+        }
+
+        /* Rocket Exhaust/Flame Effect */
+        .exhaust {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 0px;
+            background: var(--flame);
+            filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .ignite .exhaust {
+            height: 40px;
+            box-shadow: 0 0 20px var(--flame);
+        }
+
+        .shake-screen {
+            animation: shake 0.2s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -2px); }
+            100% { transform: translate(1px, -1px); }
+        }
+    </style>
+</head>
+<body id="mainBody">
+
+    <canvas id="starCanvas"></canvas>
+
+    <div id="r1" class="rocket-container rocket-left float">🚀<div class="exhaust"></div></div>
+    <div id="r2" class="rocket-container rocket-right float">🚀<div class="exhaust"></div></div>
+
+    <button class="welcome-btn" onclick="startSequence()">Welcome</button>
+
+    <script>
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let speed = 0.5;
+
+        // Initialize Canvas
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            for(let i=0; i<400; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    velocity: Math.random() * 3
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            
+            stars.forEach(s => {
+                ctx.beginPath();
+                // If speed is high, draw lines (warp effect), else draw dots
+                if (speed > 2) {
+                    ctx.moveTo(s.x, s.y);
+                    ctx.lineTo(s.x + (speed * 2), s.y + (speed * 2));
+                    ctx.strokeStyle = "white";
+                    ctx.stroke();
+                } else {
+                    ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                s.x += s.velocity * speed;
+                s.y += s.velocity * speed;
+
+                if(s.x > canvas.width) s.x = 0;
+                if(s.y > canvas.height) s.y = 0;
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        function startSequence() {
+            const r1 = document.getElementById('r1');
+            const r2 = document.getElementById('r2');
+            const body = document.getElementById('mainBody');
+
+            // 1. Ignite and Shake
+            r1.classList.remove('float');
+            r2.classList.remove('float');
+            r1.classList.add('ignite');
+            r2.classList.add('ignite');
+            body.classList.add('shake-screen');
+
+            // 2. Increase Star Speed (Hyperdrive)
+            let accel = setInterval(() => {
+                speed += 0.5;
+                if(speed > 15) clearInterval(accel);
+            }, 50);
+
+            // 3. Launch Rockets
+            setTimeout(() => {
+                r1.style.transform = "translate(3000px, -3000px) rotate(45deg) scale(0.1)";
+                r2.style.transform = "translate(3000px, -3000px) rotate(45deg) scale(0.1)";
+                
+                // 4. Redirect
+                setTimeout(() => {
+                    window.location.href = "register.html";
+                }, 1000);
+            }, 800);
+        }
+
+        initCanvas();
+        drawStars();
+        window.onresize = initCanvas;
+    </script>
+</body>
+</html>
