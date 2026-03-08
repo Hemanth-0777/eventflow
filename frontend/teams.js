@@ -1,41 +1,47 @@
-let currentTeam = [];
+const form = document.getElementById('teamForm');
+const tableBody = document.getElementById('teamTableBody');
+const searchInput = document.getElementById('searchTable');
 
-function addMember() {
-    const emailInput = document.getElementById('inviteEmail');
-    const email = emailInput.value.trim();
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    if (email && email.includes('@')) {
-        currentTeam.push(email);
-        renderRoster(email);
-        emailInput.value = '';
-        console.log(`Mock Notification: Invite sent to ${email}`);
-    } else {
-        alert("Enter a valid email!");
-    }
-}
+  const teamName = document.getElementById('teamName').value.trim();
+  const members = document.getElementById('members').value.trim();
+  const captain = document.getElementById('captain').value.trim();
+  const email = document.getElementById('email').value.trim();
 
-function renderRoster(email) {
-    const list = document.getElementById('memberList');
-    const div = document.createElement('div');
-    div.className = 'member-item';
-    div.innerHTML = `
-        <img src="https://ui-avatars.com/api/?name=${email}&background=6366f1&color=fff" alt="Avatar">
-        <div><strong>${email.split('@')[0]}</strong><p>Pending...</p></div>
-        <span class="badge" style="background:var(--warning)">Invited</span>`;
-    list.appendChild(div);
-}
+  if (!teamName || !members || !captain || !email) {
+    alert("Please fill in all fields.");
+    return;
+  }
 
-async function saveTeam() {
-    const name = document.getElementById('teamNameInput').value;
-    if(!name) return alert("Please name your team!");
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${teamName}</td>
+    <td>${members}</td>
+    <td>${captain}</td>
+    <td>${email}</td>
+    <td><span class="badge pending">Pending</span></td>
+    <td>
+      <div class="action-buttons">
+        <button class="btn btn-approve" onclick="approveTeam(this)">Approve</button>
+        <button class="btn btn-reject" onclick="rejectTeam(this)">Reject</button>
+      </div>
+    </td>
+  `;
+  tableBody.appendChild(row);
+  form.reset();
+});
 
-    try {
-        const res = await fetch('http://localhost:3000/api/register', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ teamName: name, members: currentTeam })
-        });
-        const data = await res.json();
-        alert(data.message);
-    } catch (err) { alert("Server Offline. Check Backend."); }
-}
+searchInput.addEventListener('keyup', function() {
+  const filter = searchInput.value.toLowerCase();
+  const rows = tableBody.getElementsByTagName('tr');
+  Array.from(rows).forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(filter) ? '' : 'none';
+  });
+});
+
+function approveTeam(button) {
+  const row = button.closest('tr');
+  const statusCell = row.querySelector
