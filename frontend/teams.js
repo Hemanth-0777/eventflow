@@ -1,4 +1,5 @@
 // Back and Logout buttons
+// Back and Logout buttons
 document.getElementById('backBtn').addEventListener('click', () => {
   window.location.href = 'welcome.html';
 });
