@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventFlow • Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-name">EventFlow</span>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topnav-links" data-nav>
+      <a href="index.html">Dashboard</a>
+      <a href="events.html">All Events</a>
+      <a href="teams.html">Teams</a>
+      <a href="admin.html">Admin</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="topnav-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">← Back</button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="live-now">
+      <div class="section-header">
+        <h2><span class="pulse"></span> Live Programs</h2>
+        <button class="btn btn-secondary" onclick="window.location.href='events.html'">
+          View All
+        </button>
+      </div>
+
+      <div id="live-container" class="live-grid">
+        <div class="live-card">
+          <img src="https://via.placeholder.com/320x160/ff7f50/ffffff?text=Tech+Showcase" alt="" />
+          <div class="card-info">
+            <h3>Tech Showcase</h3>
+            <p>Live demo of the latest features.</p>
+            <button
+              class="btn btn-secondary view-live"
+              data-title="Tech Showcase"
+              data-desc="Live demo of the latest features."
+              data-img="https://via.placeholder.com/640x360/ff7f50/ffffff?text=Tech+Showcase"
+            >
+              View
+            </button>
+            <span class="tag live">LIVE</span>
+          </div>
+        </div>
+
+        <div class="live-card">
+          <img src="https://via.placeholder.com/320x160/6a5acd/ffffff?text=Product+Spotlight" alt="" />
+          <div class="card-info">
+            <h3>Product Spotlight</h3>
+            <p>Highlighting new product updates.</p>
+            <button
+              class="btn btn-secondary view-live"
+              data-title="Product Spotlight"
+              data-desc="Highlighting new product updates."
+              data-img="https://via.placeholder.com/640x360/6a5acd/ffffff?text=Product+Spotlight"
+            >
+              View
+            </button>
+            <span class="tag live">LIVE</span>
+          </div>
+        </div>
+
+        <div class="live-card">
+          <img src="https://via.placeholder.com/320x160/20b2aa/ffffff?text=Community+Q%26A" alt="" />
+          <div class="card-info">
+            <h3>Community Q&A</h3>
+            <p>Join the discussion with the team.</p>
+            <button
+              class="btn btn-secondary view-live"
+              data-title="Community Q&A"
+              data-desc="Join the discussion with the team."
+              data-img="https://via.placeholder.com/640x360/20b2aa/ffffff?text=Community+Q%26A"
+            >
+              View
+            </button>
+            <span class="tag live">LIVE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="upcoming">
+      <div class="section-header">
+        <h2>Upcoming Schedules</h2>
+        <button class="btn btn-secondary" onclick="window.location.href='events.html'">
+          See All
+        </button>
+      </div>
+      <div id="event-list" class="event-list"></div>
+    </section>
+  </main>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Thanks for using EventFlow — stay connected!</p>
+    <div class="social-links">
+      <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+      <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+    </div>
+  </div>
+
+  <p class="footer-note">© 2026 EventFlow. Built with ❤️.</p>
+</footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+  
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
